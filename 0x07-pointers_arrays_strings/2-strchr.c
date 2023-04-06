@@ -1,23 +1,25 @@
-#include "main.h"
-#include <string.h>
+#include "holberton.h"
+#include <stdio.h>
+
 /**
- * _strchr -  function that locates a character in a string
- * @s: the string
- * @c: the char
- * Return: a pointer with the locate of the char
+ * _strchr - locates a character in a string
+ * @s: string to be searched
+ * @c: target char
+ * Return: pointer to first occurrence of c or NULL if char not found
  */
 char *_strchr(char *s, char c)
 {
-	unsigned long int i;
-	char *pr;
 
-	for (i = 0; s[i] >= '\0' ; i++)
+	while (*s)
 	{
-		if (s[i] == c)
+		if (c == *s)
 		{
-			pr = &s[i];
-			return (pr);
+			return (s);
 		}
+		s++;
 	}
-	return (0);
+	if (!c)
+		return (s);
+	return (NULL);
+
 }

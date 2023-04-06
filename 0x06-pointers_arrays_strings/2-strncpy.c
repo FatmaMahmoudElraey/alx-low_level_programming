@@ -1,16 +1,30 @@
-#include <string.h>
-#include "main.h"
+#include "holberton.h"
+
 /**
- * _strncpy - concatenations two strings
- * @dest: the first string
- * @src: the second string
- * @n: the number of digit that will apend from src
- * Return: a string
+ * _strncpy - copies a string
+ * @dest: destination string
+ * @src: source string
+ * @n: number of bytes to copy
+ *
+ * Return: pointer to the resulting string
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-	char *ptr;
+	int i;
 
-	ptr = strncpy(dest, src, n);
-	return (ptr);
+	i = 0;
+
+	while (src[i] != '\0' && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+
+	return (dest);
 }

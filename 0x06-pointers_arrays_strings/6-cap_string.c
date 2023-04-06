@@ -1,38 +1,34 @@
-#include "main.h"
+#include "holberton.h"
+
 /**
- * cap_string - a function that capitalizes all words of a string
- * @n: the string
- * Return: n
+ * cap_string - capitalizes everey word of a string
+ * @s: string to modify
+ *
+ * Return: the resulting string
  */
-char *cap_string(char *n)
+char *cap_string(char *s)
 {
-	int i;
+	int i, j;
 
-	i = 0;
+	char spe[13] = {' ', '\t', '\n', ',', ';', '.',
+		'!', '?', '"', '(', ')', '{', '}'};
 
-	while (n[i])
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		while (!(n[i] >= 'a' && n[i] <= 'z'))
-			i++;
+		if (i == 0 && s[i] >= 'a' && s[i] <= 'z')
+			s[i] -= 32;
 
-		if (n[i - 1] == ' ' ||
-			n[i - 1] == ',' ||
-			n[i - 1] == '\n' ||
-			n[i - 1] == '\t' ||
-			n[i - 1] == ';' ||
-			n[i - 1] == '.' ||
-			n[i - 1] == '!' ||
-			n[i - 1] == '?' ||
-			n[i - 1] == '"' ||
-			n[i - 1] == '(' ||
-			n[i - 1] == ')' ||
-			n[i - 1] == '{' ||
-			n[i - 1] == '}' ||
-			i == 0)
+		for (j = 0; j < 13; j++)
 		{
-			n[i] = n[i] - 32;
+			if (s[i] == spe[j])
+			{
+				if (s[i + 1] >= 'a' && s[i + 1] <= 'z')
+				{
+					s[i + 1] -= 32;
+				}
+			}
 		}
-		i++;
 	}
-	return (n);
+
+	return (s);
 }
